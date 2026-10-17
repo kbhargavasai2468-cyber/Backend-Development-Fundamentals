@@ -15,7 +15,7 @@ Faculty: Mr. Joel Prashanth D
 
 ## Live Deployment
 
-Deployment Link: Not deployed yet.
+https://bhargav-lab-01-express.onrender.com
 
 ## Project Objective
 
