@@ -9,8 +9,8 @@ Faculty: Mr. Joel Prashanth D
 
 | Field | Details |
 |---|---|
-| Name | Bhargav |
-| Registration Number | YOUR_REGISTRATION_NUMBER |
+| Name | K.Bhargava Sai |
+| Registration Number | 252U1R9055 |
 | Section | CSE - GEN-AI - 2A-304 |
 
 ## Live Deployment
