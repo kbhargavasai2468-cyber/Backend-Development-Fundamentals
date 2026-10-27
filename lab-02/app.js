@@ -2,11 +2,12 @@
 const express = require("express");
 const sqlite = require("sqlite");
 const sqlite3 = require("sqlite3");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
 
-const dbPath = "./books.db";
+const dbPath = path.join(__dirname, "books.db");
 let db = null;
 
 const initializeDBAndServer = async () => {
@@ -16,8 +17,10 @@ const initializeDBAndServer = async () => {
             driver: sqlite3.Database
         });
 
-        app.listen(3000, () => {
-            console.log("Server running at http://localhost:3000");
+        const port = process.env.PORT || 3000;
+
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
         });
     } catch (error) {
         console.error(`Database Error: ${error.message}`);
