@@ -16,7 +16,7 @@ Faculty: Mr. Joel Prashanth D
 
 ## Live Demo
 
-**Live URL:** Not deployed yet (local development project).
+**Live URL:** https://lab-02-sqlite-api.onrender.com
 
 **Local Server:** `http://localhost:3000`
 
