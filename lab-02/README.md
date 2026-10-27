@@ -1,180 +1,371 @@
 # Lab 2: SQLite Database and CRUD Routes
 
-**Subject:** Backend Development Fundamentals  
-**Student Name:** K. Bhargava Sai  
-**Registration Number:** 252U1R9055  
-**Section:** CSE - GEN-AI - 2A-304  
-**Year/Term:** Year II, Term II  
-**Faculty:** Joel Prashanth D.
+Subject: Backend Development Fundamentals  
+Year/Term: Year II, Term II  
+University: Aurora Deemed to be University  
+Faculty: Mr. Joel Prashanth D
+
+## Student Details
+
+| Field | Details |
+|---|---|
+| Name | K.Bhargava Sai |
+| Registration Number | 252U1R9055 |
+| Section | CSE - GEN-AI - 2A-304 |
+
+
+## Live Demo
+
+**Live URL:** Not deployed yet (local development project).
+
+**Local Server:** `http://localhost:3000`
+
+**GitHub Repository:** [Backend Development Fundamentals](https://github.com/kbhargavasai2468-cyber/Backend-Development-Fundamentals)
+
+**Note:** The application currently runs on localhost. A public deployment URL has not been created yet. All five CRUD endpoints were tested successfully using the Postman Desktop Application, and screenshots are provided below.
+
+---
 
 ## 1. Objective
 
-To connect an Express.js server to an SQLite database and implement CRUD operations through HTTP API endpoints.
+To connect an Express.js server to a SQLite database and implement CRUD (Create, Read, Update, Delete) operations using REST API endpoints.
 
-CRUD stands for:
-- **Create:** Add a new book.
-- **Read:** Retrieve book details.
-- **Update:** Modify existing book details.
-- **Delete:** Remove a book from the database.
+The application allows users to retrieve, add, update, and delete book records stored in a SQLite database.
 
 ## 2. Technologies Used
 
-- Node.js
-- Express.js
-- SQLite
-- sqlite
-- sqlite3
-- nodemon
+- Node.js — JavaScript runtime environment
+- Express.js — Backend web framework
+- SQLite — Relational database
+- sqlite3 — SQLite database driver
+- sqlite — Promise-based SQLite interface
+- Nodemon — Automatically restarts the server during development
+- Postman Desktop App — API testing
+- Visual Studio Code — Code editor
+- Git and GitHub — Version control and submission
 
 ## 3. Project Structure
 
 ```text
 lab-02/
+├── screenshots/
+│   ├── get-all-books.png
+│   ├── get-book-by-id.png
+│   ├── post-add-book.png
+│   ├── put-update-book.png
+│   └── delete-book.png
+├── .gitignore
 ├── app.js
 ├── books.db
 ├── package.json
 ├── package-lock.json
-├── .gitignore
-├── README.md
-└── screenshots/
+└── README.md
 ```
 
-## 4. Database Details
+## 4. Installation and Setup
 
-**Database file:** `books.db`  
-**Table name:** `book`
+### Step 1: Clone the Repository
 
-| Column | Data type | Description |
-|---|---|---|
-| id | INTEGER | Primary key |
-| title | TEXT | Book title |
-| author | TEXT | Author name |
-| price | INTEGER | Book price |
-| pages | INTEGER | Number of pages |
+```bash
+git clone https://github.com/kbhargavasai2468-cyber/Backend-Development-Fundamentals.git
+```
 
-The database initially contains 10 sample book records.
+### Step 2: Navigate to the Lab Folder
 
-## 5. Installation
+```bash
+cd Backend-Development-Fundamentals/lab-02
+```
 
-Install the project dependencies by running:
+### Step 3: Install Dependencies
 
 ```bash
 npm install
 ```
 
-## 6. Running the Application
+The project uses Express.js, SQLite, and related dependencies.
 
-Start the server in development mode using nodemon:
-
-```bash
-npm run dev
-```
-
-To start the server normally:
+### Step 4: Start the Server
 
 ```bash
 npm start
 ```
 
-**Local server URL:** `http://localhost:3000`
+Expected terminal output:
 
-The server starts after the SQLite database connection is established successfully.
+```text
+Server running at http://localhost:3000
+```
 
-## 7. API Endpoints
+### Step 5: Test the API
 
-| HTTP Method | Endpoint | Description | Expected success status |
-|---|---|---|---|
-| GET | `/books/` | Retrieve all books | 200 OK |
-| GET | `/books/:bookId/` | Retrieve a book by ID | 200 OK |
-| POST | `/books/` | Add a new book | 201 Created |
-| PUT | `/books/:bookId/` | Update a book by ID | 200 OK |
-| DELETE | `/books/:bookId/` | Delete a book by ID | 200 OK |
+Open Postman Desktop App and send requests to:
 
-### GET `/books/`
+```text
+http://localhost:3000
+```
 
-Retrieves all books from the database.
+**Environment Variables:** No environment variables are currently required for local execution.
 
-### GET `/books/:bookId/`
+## 5. Database Description
 
-Retrieves a particular book using its ID. Returns `404 Not Found` if the book does not exist.
+**Database:** `books.db`
 
-### POST `/books/`
+**Table:** `book`
 
-Adds a new book to the database.
+| Column | Data Type | Description |
+|---|---|---|
+| id | INTEGER | Primary key identifying each book |
+| title | TEXT | Name of the book |
+| author | TEXT | Author of the book |
+| price | INTEGER | Price of the book |
+| pages | INTEGER | Number of pages |
 
-Example request body:
+The SQLite database stores book information and supports SQL operations such as SELECT, INSERT, UPDATE, and DELETE.
+
+## 6. API Endpoints
+
+| HTTP Method | Endpoint | Description |
+|---|---|---|
+| GET | `/books/` | Retrieve all books |
+| GET | `/books/:bookId/` | Retrieve a book using its ID |
+| POST | `/books/` | Add a new book |
+| PUT | `/books/:bookId/` | Update an existing book |
+| DELETE | `/books/:bookId/` | Delete a book using its ID |
+
+## 7. CRUD Operations and Results
+
+### 7.1 GET — Retrieve All Books
+
+**Method:** GET
+
+**URL:**
+
+```text
+http://localhost:3000/books/
+```
+
+**Status:** `200 OK`
+
+**Description:** Retrieves all book records from the SQLite database and returns them as a JSON array.
+
+**Postman Output:**
+
+![GET All Books](screenshots/get-all-books.png)
+
+### 7.2 GET — Retrieve Book by ID
+
+**Method:** GET
+
+**URL:**
+
+```text
+http://localhost:3000/books/1/
+```
+
+**Status:** `200 OK`
+
+**Description:** Retrieves details of a particular book using its ID.
+
+**Example Response:**
 
 ```json
 {
-  "title": "JavaScript Basics",
-  "author": "John Smith",
-  "price": 350,
-  "pages": 250
+  "id": 1,
+  "title": "Atomic Habits",
+  "author": "James Clear",
+  "price": 450,
+  "pages": 320
 }
 ```
 
-Returns `201 Created` when a book is added successfully.
+**Postman Output:**
 
-### PUT `/books/:bookId/`
+![GET Book by ID](screenshots/get-book-by-id.png)
 
-Updates the title, author, price, and pages of an existing book.
+### 7.3 POST — Add a New Book
 
-Example request body:
+**Method:** POST
+
+**URL:**
+
+```text
+http://localhost:3000/books/
+```
+
+**Request Body:**
 
 ```json
 {
-  "title": "Node.js Advanced",
-  "author": "John Smith",
+  "title": "Deep Work",
+  "author": "Cal Newport",
   "price": 400,
-  "pages": 250
+  "pages": 300
 }
 ```
 
-Returns `404 Not Found` if the specified book does not exist.
+**Status:** `201 Created`
 
-### DELETE `/books/:bookId/`
+**Response:**
 
-Deletes a book using its ID. Returns `404 Not Found` if the specified book does not exist.
+```json
+{
+  "message": "Book added successfully",
+  "bookId": 11
+}
+```
 
-## 8. Security and Error Handling
+**Description:** Inserts a new book record into the SQLite database.
 
-- Parameterized SQL queries use `?` placeholders to safely pass user input.
-- `try...catch` blocks handle database and route errors.
-- HTTP `400` is returned for invalid book details.
-- HTTP `404` is returned when a requested book is not found.
-- HTTP `500` is returned for internal server errors.
-- The SQLite database file is included in the project.
+**Postman Output:**
 
-## 9. Testing
+![POST Add Book](screenshots/post-add-book.png)
 
-The five API endpoints have been tested locally using PowerShell HTTP requests.
+### 7.4 PUT — Update an Existing Book
 
-- GET all books: Tested successfully.
-- GET a book by ID: Tested successfully.
-- POST a new book: Tested successfully.
-- PUT an existing book: Tested successfully.
-- DELETE a book: Tested successfully.
+**Method:** PUT
 
-The database was checked after inserting and deleting a book to verify that the changes were persisted.
+**URL:**
 
-## 10. Screenshots
+```text
+http://localhost:3000/books/11/
+```
 
-Screenshots of the API requests and responses will be stored in the `screenshots/` folder.
+**Request Body:**
 
-Add screenshot links here after saving the images:
+```json
+{
+  "title": "Deep Work - Updated",
+  "author": "Cal Newport",
+  "price": 450,
+  "pages": 320
+}
+```
 
-- GET all books
-- GET a book by ID
-- POST a book
-- PUT a book
-- DELETE a book
+**Status:** `200 OK`
 
-## 11. Environment Variables
+**Response:**
 
-No environment variables are currently required for this local project.
+```text
+Book updated successfully
+```
 
-## 12. Deployment
+**Description:** Updates the existing book record using its ID.
 
-**Live URL:** Pending deployment.
+**Postman Output:**
 
-The application will be deployed to a supported hosting platform, and the live URL will be added here after successful deployment.
+![PUT Update Book](screenshots/put-update-book.png)
+
+### 7.5 DELETE — Delete a Book
+
+**Method:** DELETE
+
+**URL:**
+
+```text
+http://localhost:3000/books/11/
+```
+
+**Status:** `200 OK`
+
+**Response:**
+
+```text
+Book deleted successfully
+```
+
+**Description:** Removes the specified book record from the SQLite database.
+
+**Postman Output:**
+
+![DELETE Book](screenshots/delete-book.png)
+
+## 8. API Testing Summary
+
+All five API endpoints were tested using the Postman Desktop Application.
+
+| Operation | HTTP Method | Result |
+|---|---|---|
+| Retrieve all books | GET | 200 OK |
+| Retrieve book by ID | GET | 200 OK |
+| Add a new book | POST | 201 Created |
+| Update a book | PUT | 200 OK |
+| Delete a book | DELETE | 200 OK |
+
+**Result:** All five CRUD API requests executed successfully.
+
+## 9. SQL Queries and Security
+
+The application uses SQLite queries for database operations.
+
+- SELECT — Retrieves records.
+- INSERT — Adds records.
+- UPDATE — Modifies existing records.
+- DELETE — Removes records.
+
+Parameterized SQL queries using `?` placeholders help protect against SQL injection when handling user-supplied values.
+
+## 10. Problems Faced and Solutions
+
+### Problem 1: Postman Desktop Agent Crash
+
+The Postman Desktop Agent was crashing on Windows, preventing local API testing through the Postman web interface.
+
+**Solution:** Used the Full Postman Desktop Application to test the API endpoints directly.
+
+### Problem 2: Postman Desktop Application Not Opening
+
+The desktop application initially failed to launch.
+
+**Solution:** Launched the application using the following PowerShell command:
+
+```powershell
+& "$env:LOCALAPPDATA\Postman\Postman.exe" --disable-gpu --disable-gpu-sandbox
+```
+
+The application opened successfully, allowing API testing to continue.
+
+### Problem 3: Incorrect API Endpoint
+
+Sending a GET request to the root URL returned `404 Not Found`.
+
+**Solution:** Used the correct endpoint:
+
+```text
+http://localhost:3000/books/
+```
+
+The server returned the expected book data.
+
+## 11. Viva Questions
+
+### Q1. Why do we use `await` for database calls?
+
+`await` waits for an asynchronous database operation to complete before continuing execution. This helps ensure that the application receives the database result before using it.
+
+### Q2. What is SQL Injection?
+
+SQL injection is a security vulnerability in which malicious input changes the intended behavior of an SQL query.
+
+Parameterized queries using `?` placeholders separate user input from SQL instructions, reducing the risk of SQL injection.
+
+### Q3. What is the difference between POST and PUT?
+
+**POST:** Used to create a new resource.
+
+**PUT:** Used to replace or update a resource at a specified URL.
+
+## 12. Conclusion
+
+In this lab, an Express.js backend was connected to a SQLite database to perform CRUD operations on book records.
+
+Five REST API endpoints were implemented and successfully tested using the Postman Desktop Application.
+
+The lab demonstrates backend routing, asynchronous database operations, SQLite queries, HTTP methods, and API testing.
+
+---
+
+**Course:** Backend Development Fundamentals
+
+**Lab:** 02 — SQLite Database and CRUD Routes
+
+**Submission:** GitHub Repository
