@@ -279,6 +279,11 @@ Book deleted successfully
 
 ![DELETE Book](screenshots/delete-book.png)
 
+### SQLite Database View
+
+The `book` table contains 10 book records. The table displays the book ID, title, author, price, and number of pages in DB Browser for SQLite.
+
+![SQLite database showing 10 book records](screenshots/sqlite-database.png)
 ## 8. API Testing Summary
 
 All five API endpoints were tested using the Postman Desktop Application.
