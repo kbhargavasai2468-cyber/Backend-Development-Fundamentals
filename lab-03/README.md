@@ -13,9 +13,10 @@
 | Registration Number | 252U1R9055 |
 | Section | CSE - GEN-AI - 2A-304 |
 
-## Live Demo
+## Live Deployment Link
 
-**Live URL:** To be added after deployment  
+https://lab-03-rest-api-01ab.onrender.com/books/
+
 **Local Server:** `http://localhost:3000`  
 **GitHub Repository:** [Backend Development Fundamentals](https://github.com/kbhargavasai2468-cyber/Backend-Development-Fundamentals)
 
@@ -417,7 +418,3 @@ This lab provided practical experience with REST API design, query parameters, v
 **Course:** Backend Development Fundamentals  
 **Lab:** 03 — REST API Query Parameters, Validation, and Debugging  
 **Submission:** GitHub Repository
-
-## Live Deployment Link
-
-**Live URL:** To be added after deployment.
