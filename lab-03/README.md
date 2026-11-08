@@ -15,7 +15,7 @@
 
 ## Live Deployment Link
 
-https://lab-03-rest-api-01ab.onrender.com/books/
+https://lab-03-rest-api-01ab.onrender.com
 
 **Local Server:** `http://localhost:3000`  
 **GitHub Repository:** [Backend Development Fundamentals](https://github.com/kbhargavasai2468-cyber/Backend-Development-Fundamentals)
